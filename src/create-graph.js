@@ -1,9 +1,7 @@
 
-import { jQuery } from "../jquery/src/jquery.js";
+import { $ } from "../jquery/src/jquery.js";
 
 import moment from 'moment';
-
-window.$ = jQuery;
 
 function getColor(contributionCount) {
     let hue = Math.max(120 - contributionCount * 10, 0);
