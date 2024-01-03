@@ -1,15 +1,12 @@
 {
   "name": "contribution-graph",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
-    "air-datepicker": "^3.4.0",
-    "bootstrap": "^5.0.2",
-    "bootstrap-icons": "^1.5.0",
     "moment": "^2.14.0"
   },
   "devDependencies": {
