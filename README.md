@@ -1,10 +1,17 @@
-# contribution graphs
+# Contribution Graphs
 
 ### Introduction
 
 Create GitHub-like contribution graphs. 
 
 ![contribution graph](./contribution-graph.png)
+
+### Highlight
+
+* Create multiple graphs in a single html page
+* Change the style of graphs using basic CSS
+* Update the graph after created
+* Core JS LOC < 100
 
 ### Usage
 
@@ -88,8 +95,12 @@ setTimeout(function(){
 
 ### API
 
-`function create_graph(graph_selecter, contributions)` return graph object
+`function create_graph(graph_selecter, contributions)` return graph object.
 
-`graph.update(date, value)` update a single day
+`graph.update(date, value)` update a single day.
 
-You can change the style of the graph with CSS class `table.contributionGraph` and `.contribution-day`
+You can change the style of the graph with CSS class `table.contributionGraph` and `.contribution-day`.
+
+### Dependencies
+* Moment.js
+* jQuery
