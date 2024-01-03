@@ -19,7 +19,8 @@ $(`<table class="contributionGraph">
     <tbody class="graphBody"></tbody>
 </table>`);
 
-    $(graph_selecter).html(graph_table);
+    //$(graph_selecter).html(graph_table);
+    $(graph_selecter).empty().append(graph_table);
 
     let startDate = moment(Object.keys(contributions)[0]);
 
