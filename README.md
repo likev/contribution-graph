@@ -72,20 +72,16 @@ Create GitHub-like contribution graphs.
 // ./src/main.js
 import create_graph from './create-graph'
 
-let contributions_data1 = {
+let contributions_data = {
     '2022-03-01': 3,
     '2022-11-05': 7,
     // ... add more dates and contributions here
 },
 
-contributions_data2 = {
-    '2023-03-01': 3,
-    '2023-11-05': 7,
-    // ... add more dates and contributions here
-};
+year2023 = 2023;
 
-let graph1 = create_graph('#graph1', contributions_data1),
-graph2 = create_graph('#graph2', contributions_data2);
+let graph1 = create_graph('#graph1', contributions_data),
+graph2 = create_graph('#graph2', year2023);
 
 setTimeout(function(){
     graph1.update('2022-06-01', 3);
@@ -97,7 +93,9 @@ setTimeout(function(){
 
 `function create_graph(graph_selecter, contributions)` return graph object.
 
-`graph.update(date, value)` update a single day.
+`function create_graph(graph_selecter, year)` return graph object of year, default is current year if not provided.
+
+`graph.update(date, value)` update a single day, date can be string or Date or Moment.
 
 You can change the style of the graph with CSS class `table.contributionGraph` and `.contribution-day`.
 
