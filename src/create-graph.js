@@ -11,8 +11,8 @@ function getColor(contributionCount) {
 }
 
 function create_graph(graph_selecter, contributions) {
-    const graph_table = 
-$(`<table class="contributionGraph">
+    const graph_table =
+        $(`<table class="contributionGraph">
     <thead>
         <tr class="monthHeader"></tr>
     </thead>
@@ -38,21 +38,26 @@ $(`<table class="contributionGraph">
     let numWeeks = Math.ceil((numDays + firstday_week) / 7);
 
     // Create the month headers
-    let weekStart = firstday.clone(), lastMonth = '';
-
     const graph_table_header = $('.monthHeader', graph_table);
-    $('.monthHeader', graph_table).append($('<th>').addClass('empty-header'));
-    for (let w = 0; w < numWeeks; w++) {
-        
+
+    graph_table_header
+        .append($('<th>').addClass('empty-header'))
+        .append($('<th>').text('Jan'));
+
+    //Saturday as 6
+    let weekStart = firstday.clone().day(6), lastMonth = 'Jan';
+
+    for (let w = 1; w < numWeeks; w++) {
+
+        weekStart.add(7, 'days');
         let monthName = weekStart.format('MMM');
+
         if (lastMonth !== monthName) {
             graph_table_header.append($('<th>').text(monthName));
             lastMonth = monthName;
         } else {
             graph_table_header.append($('<th>').addClass('empty-header'));
         }
-
-        weekStart = weekStart.add(7, 'days').startOf('isoWeek');
 
     }
 
@@ -67,24 +72,24 @@ $(`<table class="contributionGraph">
         graph_table_body.append(row);
     }
 
-    function update(date, value){
+    function update(date, value) {
         const currentDate = moment(date);
         let col = Math.ceil((currentDate.dayOfYear() + firstday_week) / 7);
         let dateStr = currentDate.format('YYYY-MM-DD');
         let cell = $(`.cell-${currentDate.day()}-${col}`, graph_table_body).addClass('contribution-day');
-        
+
         if (value) {
             console.log(col)
             cell.css('background-color', getColor(value));
         }
-        cell.attr('title', dateStr + ': ' + (value || 0) );
+        cell.attr('title', dateStr + ': ' + (value || 0));
 
     }
 
 
     // Create the contribution graph
     for (let i = 0, currentDate = firstday.clone(); i < numDays; i++) {
-        
+
         const dateStr = currentDate.format('YYYY-MM-DD'), value = contributions[dateStr];
         update(currentDate, value)
 
